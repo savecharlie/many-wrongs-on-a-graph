@@ -84,4 +84,10 @@ curve = np.interp(cl_f, cls[np.argsort(cls)], tax[np.argsort(cls)])
 print(f"R3  real 6-NN flock: clustering {cl_f:.4f}, tax {tax_f:.1%}; "
       f"sweep curve at that clustering predicts {curve:.1%}  "
       f"(off by {abs(tax_f-curve)*100:.1f} pts)")
-print(f"    {'HELD (flock is OFF the curve, as predicted)' if abs(tax_f-curve) > 0.02 else 'MISSED -- the flock lands ON the curve; clustering really is the whole of it'}")
+print(f"    {'HELD (flock is OFF the curve)' if abs(tax_f-curve) > 0.02 else 'MISSED -- the flock lands ON the curve'}")
+print("\n  BUT CLUSTERING IS NOT THE WHOLE OF IT, and the counterexample is in the figure:")
+print("  the 3-D CUBIC LATTICE is triangle-free (clustering 0.000) and still sits +3.4 pts")
+print("  ABOVE this curve, because its spectral gap is 0.0217 against the random regular")
+print("  graph's 0.2267. The sweep is built from rings, so it never visits 'triangle-free")
+print("  AND diffusive' and cannot place it. Short cycles dominate when present; when they")
+print("  are gone, long-range diffusion takes over. Residuals for all five: run_offcurve.py")
